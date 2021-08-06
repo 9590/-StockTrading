@@ -39,6 +39,8 @@ create database stocktrading;
 create user 'trading'@'localhost' identified by 'trading';
 grant all privileges on stocktrading to 'trading'@'localhost';
 ALTER TABLE django_content_type MODIFY COLUMN name character varying(50) NOT NULL DEFAULT 'not null';
+
+grant all on *.* to 'trading'@'localhost';
 flush privileges;
 ```
 
