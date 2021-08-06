@@ -33,11 +33,12 @@ my-fake-useragent用于生成伪请求头，爬取相应的新闻数据。
 django-mptt用于生成树形多级评论。
 
 
-4. 创建对应数据库（stocktrading）和用户（trading）
+4. 打开SQL终端命令行，创建对应数据库（stocktrading）和用户（trading）
 ```sql
 create database stocktrading;
-create user 'trading'@'localhost' identified by trading;
+create user 'trading'@'localhost' identified by 'trading';
 grant all privileges on stocktrading to 'trading'@'localhost';
+ALTER TABLE django_content_type MODIFY COLUMN name character varying(50) NOT NULL DEFAULT 'not null';
 flush privileges;
 ```
 
@@ -46,6 +47,7 @@ flush privileges;
 改命令会根据`models.py`文件中定义的模型创建数据表结构（无数据）。
 
 ```bash
+$ python manage.py migrate --fake
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
